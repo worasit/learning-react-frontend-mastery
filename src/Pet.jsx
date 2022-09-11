@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import React from "react";
 
 const Pet = (props) => {
   return (
@@ -8,12 +8,6 @@ const Pet = (props) => {
       <h2>{props.breed}</h2>
     </div>
   );
-};
-
-Pet.propTypes = {
-  name: PropTypes.string,
-  animal: PropTypes.string,
-  breed: PropTypes.string,
 };
 
 export default Pet;
