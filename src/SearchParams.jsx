@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Pet from "./Pet";
 import useBreedList from "./useBreedList";
 import Results from "./Results";
 
