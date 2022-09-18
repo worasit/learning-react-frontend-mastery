@@ -16,3 +16,7 @@ https://btholt.github.io/complete-intro-to-react-v7/
 npx parcel build src/index.html
 npx serve dist
 ```
+
+## Type of Routers
+
+https://www.geeksforgeeks.org/reactjs-types-of-routers/
