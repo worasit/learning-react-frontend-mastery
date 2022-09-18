@@ -9,3 +9,10 @@ npm install -D eslint-plugin-import@2.25.4 eslint-plugin-jsx-a11y@6.5.1 eslint-p
 ```
 
 https://btholt.github.io/complete-intro-to-react-v7/
+
+## Build and Deploy for Production
+
+```shell
+npx parcel build src/index.html
+npx serve dist
+```
