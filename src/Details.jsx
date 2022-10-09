@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "./Carousel";
 import ThemeContext from "./ThemeContext";
+import Modal from "./Modal";
 
 class Details extends Component {
   constructor(props) {
     super(props);
-    this.state = { loading: true };
+    this.state = { loading: true, showModal: false };
   }
 
   async componentDidMount() {
@@ -18,12 +19,18 @@ class Details extends Component {
     this.setState({ loading: false, ...json.pets[0] });
   }
 
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal,
+    });
+  }
+
   render() {
     if (this.state.loading) {
       return <h2>loading ...</h2>;
     }
 
-    const { animal, breed, city, state, description, name, images } =
+    const { animal, breed, city, state, description, name, images, showModal } =
       this.state;
 
     return (
@@ -36,10 +43,24 @@ class Details extends Component {
           </h2>
           <ThemeContext.Consumer>
             {([theme]) => (
-              <button style={{ backgroundColor: theme }}>Adopt {name}</button>
+              <button
+                onClick={this.toggleModal.bind(this)}
+                style={{ backgroundColor: theme }}
+              >
+                Adopt {name}
+              </button>
             )}
           </ThemeContext.Consumer>
           <p>{description}</p>
+          {showModal ? (
+            <Modal>
+              <div className="buttons">
+                <h1>Would you like to adopt {name}?</h1>
+                <a href="https://bit.ly/pet-adopt">Yes</a>
+                <button onClick={this.toggleModal.bind(this)}>No</button>
+              </div>
+            </Modal>
+          ) : null}
         </div>
       </div>
     );
